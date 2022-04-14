@@ -1,17 +1,22 @@
 <template>
-   <section>
-       <div class="container">
-
-       </div>
-   </section>
+  <section>
+    <div class="container">
+      <SearchInput />
+      <DropdownRegion />
+    </div>
+  </section>
 </template>
 
 <script>
-    export default {
-        
-    }
+import SearchInput from "./SearchInput.vue";
+import DropdownRegion from "./DropdownRegion.vue";
+export default {
+  components: {
+    SearchInput,
+    DropdownRegion,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
