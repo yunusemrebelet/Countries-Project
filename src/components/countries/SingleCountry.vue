@@ -1,56 +1,29 @@
 <template>
-  <div class="country-card">
+  <div v-for="country in countryList" :key="country" class="country-card">
     <div class="country-header">
-      <img src="https://flagcdn.com/de.svg" alt="Germany" />
+      <img :src="country.flags.svg" :alt="country.name" />
     </div>
     <div class="country-body">
-      <h2>Germany</h2>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-    </div>
-  </div>
-   <div class="country-card">
-    <div class="country-header">
-      <img src="https://flagcdn.com/de.svg" alt="Germany" />
-    </div>
-    <div class="country-body">
-      <h2>Germany</h2>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-    </div>
-  </div>
-   <div class="country-card">
-    <div class="country-header">
-      <img src="https://flagcdn.com/de.svg" alt="Germany" />
-    </div>
-    <div class="country-body">
-      <h2>Germany</h2>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-    </div>
-  </div>
-   <div class="country-card">
-    <div class="country-header">
-      <img src="https://flagcdn.com/de.svg" alt="Germany" />
-    </div>
-    <div class="country-body">
-      <h2>Germany</h2>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
-      <p><strong>Population:</strong>81,000,000</p>
+      <h2>{{ country.name }}</h2>
+      <p><strong>Population: </strong>{{ country.population }}</p>
+      <p><strong>Region: </strong>{{ country.region }}</p>
+      <p><strong>Capital: </strong>{{ country.capital }}</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["countryList"]),
+  },
+  mounted() {
+    this.$store.commit("getCountries");
+    console.log();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
