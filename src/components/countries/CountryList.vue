@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="countries">
+  <div class="container country-list" id="countries">
     <SingleCountry />
   </div>
 </template>
@@ -15,4 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.country-list {
+  justify-content: center;
+}
 </style>

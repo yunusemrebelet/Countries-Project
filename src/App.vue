@@ -8,7 +8,7 @@
 
 <script>
 import Header from "./components/Header.vue";
-import FilterSection from "./components/filter/FilterSection.vue"
+import FilterSection from "./components/filter/FilterSection.vue";
 import CountryList from "./components/countries/CountryList.vue";
 
 export default {
@@ -44,6 +44,7 @@ h1 {
 .container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   max-width: 1440px;
   padding: 30px;
