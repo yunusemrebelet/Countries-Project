@@ -3,15 +3,20 @@
     <div class="container">
       <h1>Where in the world?</h1>
       <!-- TODO: Add reactive class to toggle dark and light mode fas fa-moon far fa-moon ve dark-mode,light-mode classes-->
-      <button class="btn btn-toggle-mode">
-        <i class="far fa-moon"></i> Dark Mode
+      <button @click="this.$store.commit('changeTheme')" class="btn btn-toggle-mode">
+        <i :class="[this.$store.state.isDarkMode? 'fas fa-moon' : 'far fa-moon']"></i> {{this.$store.state.isDarkMode? 'Dark Mode' : 'Light Mode'}}
       </button>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {},
+  mounted() {
+    console.log(this.$store.state.isDarkMode);
+  },
+};
 </script>
 
 <style lang="scss" scoped>
