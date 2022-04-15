@@ -1,5 +1,9 @@
 <template>
-  <div v-for="country in countryList" :key="country" class="country-card">
+  <div
+    v-for="country in filteredCountryList"
+    :key="country"
+    class="country-card"
+  >
     <div class="country-header">
       <img :src="country.flags.svg" :alt="country.name" />
     </div>
@@ -18,27 +22,47 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["countryList"]),
+    filteredCountryList() {
+      return this.filterByCountryName();
+    },
+  },
+  methods: {
+    filterByCountryName() {
+      return this.$store.state.countryList.filter((country) =>
+        country.name
+          .toLowerCase()
+          .includes(this.$store.state.filterText.toLowerCase())
+      );
+    },
   },
   mounted() {
     this.$store.commit("getCountries");
-    console.log();
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .country-card {
-  width: 300px;
+  height: 450px;
+  width: 320px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  margin: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
   .country-body {
     padding: 30px;
     h2 {
       margin-top: 0;
+    }
+  }
+  .country-header {
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }

@@ -4,7 +4,11 @@ import axios from 'axios';
 export default createStore({
   state: {
     isDarkMode: false,
-    countryList: null
+    countryList: [],
+    dropdownVisibility: false,
+    filterText: "",
+    selectedRegion: "",
+    regionList: ["Africa", "America", "Europe", "Asia", "Oceania"]
   },
   getters: {
   },
@@ -15,13 +19,19 @@ export default createStore({
     },
     getCountries(state) {
       axios.get('https://restcountries.com/v2/all')
-        .then((response) => {          
+        .then((response) => {
           state.countryList = response.data
+          console.log(state.countryList)
+          console.log(response.data)
         })
         .catch((error) => {
           console.error(error);
         })
-    }
+    },
+    dropdownToggle(state) {
+      state.dropdownVisibility = !state.dropdownVisibility;
+      console.log(state.dropdownVisibility);
+    },
   },
   actions: {
   },

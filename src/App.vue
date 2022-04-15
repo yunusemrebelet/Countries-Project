@@ -31,6 +31,8 @@ export default {
 body {
   background-color: hsl(0, 0%, 98%);
   font-family: "Nunito Sans", sans-serif;
+  margin: 0;
+  color:  hsl(200, 15%, 8%);
 }
 
 img {
@@ -46,7 +48,8 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1440px;
+  width: 100%;
   padding: 30px;
+  max-width: 1440px;
 }
 </style>

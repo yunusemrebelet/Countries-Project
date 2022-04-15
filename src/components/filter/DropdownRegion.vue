@@ -1,18 +1,31 @@
 <template>
-  <div class="dropdown-region">
+  <div @click="this.$store.commit('dropdownToggle')" class="dropdown-region">
     Filter by region <i class="fas fa-chevron-down"></i>
-    <ul>
-      <li>Africa</li>
-      <li>America</li>
-      <li>Asia</li>
-      <li>Europe</li>
-      <li>Oceania</li>
+    <ul v-if="dropdownVisibility">
+      <li
+        @click="filterByRegion(region)"
+        v-for="region in this.$store.state.regionList"
+        :key="region"
+      >
+        {{ region }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState(["dropdownVisibility"]),
+  },
+  methods: {
+    filterByRegion(selectedRegion) {
+      this.$store.state.selectedRegion = selectedRegion;
+      console.log(this.$store.state.selectedRegion);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,7 +48,7 @@ export default {};
     top: 100%;
     list-style: none;
     li {
-      margin: 5px 0;
+      margin: 10px 0;
     }
   }
   i {

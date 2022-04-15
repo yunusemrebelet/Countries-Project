@@ -1,6 +1,10 @@
 <template>
   <div>
-    <input type="text" placeholder="Search for a country" />
+    <input
+      v-model="this.$store.state.filterText"
+      type="text"
+      placeholder="Search for a country..."
+    />
   </div>
 </template>
 
