@@ -3,7 +3,7 @@
     Filter by region <i class="fas fa-chevron-down"></i>
     <ul v-if="dropdownVisibility">
       <li
-        @click="filterByRegion(region)"
+        @click="setSelectedRegion(region)"
         v-for="region in this.$store.state.regionList"
         :key="region"
       >
@@ -20,7 +20,7 @@ export default {
     ...mapState(["dropdownVisibility"]),
   },
   methods: {
-    filterByRegion(selectedRegion) {
+    setSelectedRegion(selectedRegion) {
       this.$store.state.selectedRegion = selectedRegion;
       console.log(this.$store.state.selectedRegion);
     },

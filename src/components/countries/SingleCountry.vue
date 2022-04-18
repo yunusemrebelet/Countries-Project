@@ -23,15 +23,20 @@ export default {
   computed: {
     ...mapState(["countryList"]),
     filteredCountryList() {
-      return this.filterByCountryName();
+      return this.filterByRegion(this.filterByCountryName(this.$store.state.countryList));
     },
   },
   methods: {
-    filterByCountryName() {
-      return this.$store.state.countryList.filter((country) =>
+    filterByCountryName(countries) {
+      return countries.filter((country) =>
         country.name
           .toLowerCase()
           .includes(this.$store.state.filterText.toLowerCase())
+      );
+    },
+    filterByRegion(countries) {
+      return countries.filter((country) =>
+        country.region.includes(this.$store.state.selectedRegion)
       );
     },
   },
@@ -44,14 +49,13 @@ export default {
 <style lang="scss" scoped>
 .country-card {
   height: 450px;
-  width: 320px;
+  width: 300px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 30px;
   .country-body {
     padding: 30px;
     h2 {

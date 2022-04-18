@@ -49,7 +49,6 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  padding: 30px;
   max-width: 1440px;
 }
 </style>

@@ -7,7 +7,7 @@ export default createStore({
     countryList: [],
     dropdownVisibility: false,
     filterText: "",
-    selectedRegion: "",
+    selectedRegion: "Asia",
     regionList: ["Africa", "America", "Europe", "Asia", "Oceania"]
   },
   getters: {
@@ -21,8 +21,7 @@ export default createStore({
       axios.get('https://restcountries.com/v2/all')
         .then((response) => {
           state.countryList = response.data
-          console.log(state.countryList)
-          console.log(response.data)
+          console.log(response.data,"response data")
         })
         .catch((error) => {
           console.error(error);

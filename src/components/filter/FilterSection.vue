@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="filter-container">
+    <div class="container">
       <SearchInput />
       <DropdownRegion />
     </div>
@@ -23,14 +23,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.filter-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
   padding: 30px;
-  max-width: 1440px;
 }
+
 </style>
